@@ -1,0 +1,30 @@
+{
+  "antes": {
+    "bytes": 28279,
+    "dcl": 462,
+    "load": 463,
+    "fcp": 480,
+    "files": {
+      "index.html": 3563,
+      "icon-192.png": 8103,
+      "style.css": 8125,
+      "script.js": 8488
+    },
+    "requests": 4,
+    "runs": 7
+  },
+  "depois": {
+    "bytes": 16365,
+    "dcl": 401,
+    "load": 402,
+    "fcp": 424,
+    "files": {
+      "index.html": 3053,
+      "logo-80.webp": 1344,
+      "style.min.css": 5726,
+      "script.min.js": 6242
+    },
+    "requests": 4,
+    "runs": 7
+  }
+}

@@ -1,0 +1,431 @@
+/* ============================================================
+   Diário de Bordo — design tokens
+   A ship's logbook feel: navy, aged paper and brass.
+   ============================================================ */
+
+:root {
+  --ink-navy: #122438;
+  --ink-navy-deep: #0c1a29;
+  --paper: #f3ecdd;
+  --paper-deep: #eae0c8;
+  --paper-line: #d8cba8;
+  --brass: #c49b4a;
+  --brass-deep: #a87f35;
+  --teal: #2f5d62;
+  --charcoal: #23201b;
+  --charcoal-soft: #5c5648;
+  --danger: #8c3b2e;
+  --danger-deep: #712f25;
+
+  --font-display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  --radius: 4px;
+  --content-width: 1040px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--charcoal);
+  background: var(--paper);
+  line-height: 1.5;
+}
+
+h1, h2 {
+  margin: 0;
+  font-family: var(--font-display);
+}
+
+button {
+  font-family: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--teal);
+  outline-offset: 2px;
+}
+
+/* ============================================================
+   Masthead
+   ============================================================ */
+
+.masthead {
+  background: var(--ink-navy);
+  color: var(--paper);
+  border-bottom: 3px solid var(--brass);
+}
+
+.masthead__inner {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.masthead__brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.masthead__icon {
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.masthead__title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--paper);
+}
+
+.masthead__subtitle {
+  margin: 2px 0 0;
+  font-size: 0.92rem;
+  color: #c9d4dc;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: #d9e2e8;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 6px 12px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.status__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #6fbf7a;
+  display: inline-block;
+}
+
+.status.is-offline .status__dot {
+  background: var(--brass);
+}
+
+/* ============================================================
+   Layout
+   ============================================================ */
+
+.deck {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 32px 24px 48px;
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+@media (max-width: 760px) {
+  .deck {
+    grid-template-columns: 1fr;
+    padding: 24px 16px 40px;
+  }
+}
+
+.card__title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--ink-navy);
+}
+
+/* ============================================================
+   Entry form — styled like a ruled index card
+   ============================================================ */
+
+.entry-form {
+  background: var(--paper-deep);
+  border: 1px solid var(--paper-line);
+  border-left: 4px solid var(--brass);
+  border-radius: var(--radius);
+  padding: 22px 22px 24px;
+  position: sticky;
+  top: 24px;
+}
+
+@media (max-width: 760px) {
+  .entry-form {
+    position: static;
+  }
+}
+
+.entry-form form {
+  margin-top: 18px;
+}
+
+.field {
+  margin-bottom: 16px;
+}
+
+.field label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--charcoal-soft);
+  margin-bottom: 6px;
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 0.95rem;
+  font-family: var(--font-body);
+  color: var(--charcoal);
+  background: var(--paper);
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius);
+  resize: vertical;
+}
+
+.field input:focus,
+.field textarea:focus {
+  border-color: var(--teal);
+}
+
+.field__error {
+  color: var(--danger);
+  font-size: 0.85rem;
+  margin: -6px 0 14px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 20px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: var(--radius);
+  border: none;
+  cursor: pointer;
+  transition: background-color 120ms ease, color 120ms ease, border-color 120ms ease;
+}
+
+.button--primary {
+  background: var(--ink-navy);
+  color: var(--paper);
+  width: 100%;
+}
+
+.button--primary:hover {
+  background: var(--ink-navy-deep);
+}
+
+.button--ghost {
+  background: transparent;
+  color: var(--ink-navy);
+  border: 1px solid var(--paper-line);
+}
+
+.button--ghost:hover {
+  border-color: var(--brass);
+  color: var(--brass-deep);
+}
+
+/* ============================================================
+   Log list
+   ============================================================ */
+
+.log__header {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.log__count {
+  font-size: 0.85rem;
+  color: var(--charcoal-soft);
+  background: var(--paper-deep);
+  border: 1px solid var(--paper-line);
+  border-radius: 999px;
+  padding: 2px 10px;
+}
+
+.log__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.entry {
+  display: grid;
+  grid-template-columns: 96px 1fr auto;
+  gap: 16px;
+  align-items: start;
+  background: #fff;
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  animation: entry-in 260ms ease both;
+}
+
+@media (max-width: 560px) {
+  .entry {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .entry__remove {
+    justify-self: start;
+  }
+}
+
+@keyframes entry-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.entry__date {
+  font-family: var(--font-display);
+  color: var(--ink-navy);
+  line-height: 1.15;
+}
+
+.entry__date-day {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.entry__date-rest {
+  display: block;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--charcoal-soft);
+}
+
+.entry__title {
+  margin: 0 0 4px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--charcoal);
+}
+
+.entry__description {
+  margin: 0;
+  color: var(--charcoal-soft);
+  font-size: 0.92rem;
+  white-space: pre-wrap;
+}
+
+.entry__remove {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--danger);
+  padding: 6px 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: var(--radius);
+}
+
+.entry__remove:hover {
+  background: #fbeceb;
+  border-color: var(--danger);
+}
+
+/* ============================================================
+   Empty state
+   ============================================================ */
+
+.empty-state {
+  border: 1px dashed var(--paper-line);
+  border-radius: var(--radius);
+  padding: 32px 20px;
+  text-align: center;
+  color: var(--charcoal-soft);
+}
+
+.empty-state p {
+  margin: 0 0 4px;
+}
+
+.empty-state[hidden] {
+  display: none;
+}
+
+/* ============================================================
+   Footer & toast
+   ============================================================ */
+
+.foot {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 24px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.foot__text {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--charcoal-soft);
+}
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  transform: translate(-50%, 12px);
+  background: var(--ink-navy);
+  color: var(--paper);
+  padding: 12px 20px;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease, transform 180ms ease;
+  z-index: 100;
+  max-width: calc(100% - 32px);
+  text-align: center;
+}
+
+.toast.is-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .entry {
+    animation: none;
+  }
+  .toast {
+    transition: none;
+  }
+}

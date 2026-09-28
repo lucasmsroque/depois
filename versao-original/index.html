@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diário de Bordo</title>
+  <meta name="description" content="Registre suas atividades diárias, mesmo offline." />
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#122438" />
+  <link rel="icon" type="image/png" href="icons/favicon.png" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Diário de Bordo" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="masthead">
+    <div class="masthead__inner">
+      <div class="masthead__brand">
+        <img src="icons/icon-192.png" alt="" class="masthead__icon" width="40" height="40" />
+        <div>
+          <h1 class="masthead__title">Diário de Bordo</h1>
+          <p class="masthead__subtitle">Registre o que você fez, dia após dia</p>
+        </div>
+      </div>
+      <div class="status" id="connectionStatus" role="status" aria-live="polite">
+        <span class="status__dot" aria-hidden="true"></span>
+        <span class="status__label">Online</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="deck">
+
+    <section class="card entry-form" aria-labelledby="formTitle">
+      <h2 id="formTitle" class="card__title">Nova entrada</h2>
+
+      <form id="entryForm" novalidate>
+        <div class="field">
+          <label for="entryTitle">Título</label>
+          <input
+            type="text"
+            id="entryTitle"
+            name="title"
+            placeholder="Ex.: Reunião com a equipe"
+            autocomplete="off"
+            required
+          />
+        </div>
+
+        <div class="field">
+          <label for="entryDate">Data</label>
+          <input type="date" id="entryDate" name="date" required />
+        </div>
+
+        <div class="field">
+          <label for="entryDescription">Descrição</label>
+          <textarea
+            id="entryDescription"
+            name="description"
+            rows="4"
+            placeholder="O que aconteceu, o que você fez ou aprendeu..."
+          ></textarea>
+        </div>
+
+        <p class="field__error" id="formError" role="alert" hidden></p>
+
+        <button type="submit" class="button button--primary">Registrar entrada</button>
+      </form>
+    </section>
+
+    <section class="log" aria-labelledby="logTitle">
+      <div class="log__header">
+        <h2 id="logTitle" class="card__title">Entradas registradas</h2>
+        <span class="log__count" id="entryCount">0</span>
+      </div>
+
+      <ul class="log__list" id="entryList"></ul>
+
+      <div class="empty-state" id="emptyState">
+        <p>O diário está em branco.</p>
+        <p>Registre a primeira atividade ao lado para começar.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="foot">
+    <p class="foot__text">Suas entradas ficam salvas neste dispositivo, mesmo sem internet.</p>
+    <button id="installButton" class="button button--ghost" hidden>Instalar aplicativo</button>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
